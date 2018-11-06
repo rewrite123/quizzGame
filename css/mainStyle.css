@@ -1,0 +1,64 @@
+canvas{
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+button{
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	min-height: 50px;
+	text-align: center;
+	font-family: "Georgia";
+	font-size: 18px;
+}
+.headingContainer{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: red;
+	background-color: rgb(101, 101, 101);
+}
+.title{
+	margin: auto;
+	padding-bottom: 10px;
+	font-weight: bold;
+	font-size: 22px;
+}
+.mainContainer{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 65px;
+	padding: 10px;
+	width: 80%;
+	text-align: center;
+	background-color: rgb(201, 201, 201);
+}
+.questionContainer{
+	display: none;
+}
+.question{
+	padding-top: 10px;
+	font-family: "Georgia";
+	font-size: 24px;
+}
+.princessImage{
+	height: auto; 
+	width: auto; 
+	max-width: 500px; 
+	max-height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+@media screen and (max-width: 850px){
+	.princessImage{
+		height: auto; 
+		width: auto; 
+		max-width: 250px; 
+		max-height: 250px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
