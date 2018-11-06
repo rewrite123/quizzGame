@@ -1,9 +1,12 @@
+/* This is the stuff that we need for the timer at the top to show. */
 const canvas = document.getElementById("canvas");
 const g = canvas.getContext("2d");
 
+/* The array is going to hold all of our Q objects, and currentQuestion is the index that we are on for each Q in questions. */
 var questions = [];
 var currentQuestion = 0;
 
+/* This is the object that represents each question. This allows me to easily customize each question time, question and answer from one simple place. */
 var Q = function(){
 	
 	this.loadedTime = -1;
@@ -18,6 +21,7 @@ var Q = function(){
 	
 	this.answer = -1;
 	
+	/* This is what we call when we want to setup the question for answering. */
 	this.setup = function(){
 		enableChoices();
 		document.getElementById("b0").style.fontWeight = "normal";
@@ -34,6 +38,7 @@ var Q = function(){
 		this.timeDown();
 	}
 	
+	/* This is for the loop that we use to dislplay the time on the canvas. */
 	this.timeDown = function(){
 		
 		var temp = this;
@@ -51,6 +56,7 @@ var Q = function(){
 		
 	}
 	
+	/* This is the function that actually takes care of the rendering of the canvas. */
 	this.renderTimer = function(){
 		canvas.width = window.innerWidth;
 		canvas.height = 10;
@@ -64,6 +70,10 @@ var Q = function(){
 	
 }
 
+/*
+This records the answer from the button we clicked, and sets the buttons we didnt click to normal font-weight.
+It also sets the font-weight of the button we clicked to bold.
+*/
 function answer(ans){
 	document.getElementById("b0").style.fontWeight = "normal";
 	document.getElementById("b1").style.fontWeight = "normal";
@@ -74,6 +84,10 @@ function answer(ans){
 	questions[currentQuestion].answer = ans;
 }
 
+/* 
+This sets up the next question. If there are no more questions to be answered in the array questions,
+then we run results().
+*/
 function nextQuestion(){
 	clearInterval(questions[currentQuestion].intervalId);
 	currentQuestion++;
@@ -84,6 +98,7 @@ function nextQuestion(){
 	}
 }
 
+/* This is responsible for making the proper elements visible, while also resetting the questions. */
 function startQuiz(){
 	resetQuestions();
 	
@@ -98,6 +113,10 @@ function startQuiz(){
 	
 }
 
+/*
+This displays the results of the quiz after we have finished it.
+This also is in charge of hiding and showing the proper elements.
+*/
 function results(){
 	document.getElementById("startQuizButton").textContent = "Retake Quize";;
 	var questionContainer = document.getElementById("questionContainer");
@@ -175,12 +194,14 @@ function results(){
 	
 }
 
+/* This just makes disabling the buttons easier. */
 function disableChoices(){
 	document.getElementById("b0").disabled = true;
 	document.getElementById("b1").disabled = true;
 	document.getElementById("b2").disabled = true;
 	document.getElementById("b3").disabled = true;
 }
+/* This just makes enabling the buttons easier. */
 function enableChoices(){
 	document.getElementById("b0").disabled = false;
 	document.getElementById("b1").disabled = false;
@@ -188,6 +209,7 @@ function enableChoices(){
 	document.getElementById("b3").disabled = false;
 }
 
+/* This is the function that actualy sets questions to the Qs that we acually want. */
 function resetQuestions(){
 	quuestions = [];
 	questions.push( new Q("What is your favorite color?", ["red", "green", "no blue!", "fuscia"]) );
